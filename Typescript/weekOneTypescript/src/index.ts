@@ -30,7 +30,7 @@ const totalNumProducts = (parr: Product[]): number => {
 
 const mostExpProduct = (prod: Product[]): Product | void => {
   let prodExpensive = prod.filter((ele) => ele.stock === "inStock");
-  if (prodExpensive.length < 1) return [];
+  if (prodExpensive.length < 1) return;
   const exp = prodExpensive.reduce((acc, cval) =>
     cval.price > acc.price ? cval : acc,
   );
