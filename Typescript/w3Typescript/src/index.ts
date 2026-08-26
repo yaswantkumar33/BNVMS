@@ -124,3 +124,72 @@ enum CardinalDirection3 {
   East = "East",
   West = "West",
 }
+
+// 260826
+// aliases and interfaces
+// type script allows us to define the types of the varibale speprately whgihc can be used later
+
+// ####Type aliases
+
+type Car = string;
+type Bike = string;
+type User = {
+  name: string;
+  age: number;
+  slary: number;
+};
+
+let carName: Car = "BMW M320I";
+let bikeName: Bike = "triumph street triple rs";
+
+let userData: User = {
+  name: "Yash",
+  age: 30,
+  slary: 30000000,
+};
+
+console.log(".//////////////////////////////////////");
+console.log(carName, bikeName, userData);
+// these type alaiasa can bre used to primittive types and more complex ones ike objs and  array
+
+// But our interfaces are more like type but they apply only to objects
+// eg:
+// only in  type aliasas we can do union and intersection types
+// like these ones
+type Animals = {
+  name: string;
+};
+type Bear = Animals & {
+  age: number;
+};
+type Status = "sucess" | "error";
+interface CarData {
+  name: string;
+  price: number;
+  instock: boolean;
+  power: string;
+}
+
+let dataOfCar: CarData = {
+  name: "buggati",
+  price: 40000000,
+  instock: true,
+  power: "1200hp",
+};
+console.log(dataOfCar);
+// And there is a another conept in interfaces
+// that is interface merging
+interface Animal {
+  name: string;
+}
+interface Animal {
+  age: number;
+}
+
+const dog = {
+  name: "marco",
+  age: "5",
+};
+
+// type script functions 
+
