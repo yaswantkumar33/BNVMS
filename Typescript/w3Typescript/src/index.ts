@@ -191,5 +191,80 @@ const dog = {
   age: "5",
 };
 
-// type script functions 
+// type script functions
 
+// in ts it has it's oown syntax to return type and parameter type of function
+
+// return type
+
+function addTwoNumbers(): number {
+  return 1 + 2;
+}
+//if the return typoe is not define the ts will inter the return type based on the value returned
+
+// and if there is nothing to return meas we use void
+function logthedata() {
+  console.log("this is the load data from the function");
+}
+
+// now here is the paramaters are defined type
+function abc(a: number, b: string): number | string {
+  return a + b;
+}
+// and here is ourt optional paramaters
+
+function def(a: number, b: string, c?: string): number | string {
+  return a + b + c;
+}
+
+type Add = (a: number, c: number) => number;
+
+let add: Add = (a, b) => {
+  return a + b;
+};
+let a_add = add(1, 2);
+console.log(a_add);
+
+let x: unknown = "this is the test string";
+console.log((<string>x).length);
+
+// classes in typescript
+class Carclass {
+  private name: string;
+  public constructor(name: string) {
+    this.name = name;
+  }
+  public getname(): string {
+    return this.name;
+  }
+}
+
+let carNameClass = new Carclass("bmw320 i");
+console.log(carNameClass.getname());
+// console.log(carNameClass.name); // error
+
+// generics in ts
+// generics let us write a code that works with different types while;e keeping the typescript aware of the exact type your using
+// example
+
+function testfun<T>(value: T): T {
+  return value;
+}
+
+let atest = testfun<number>(4);
+let btest = testfun<string>("this is the sting");
+let ctest = testfun<boolean>(true);
+
+let TestOne: Array<number> = [1, 2, 3, 4, 5];
+
+type BoxType<T, K, Y> = {
+  name: T;
+  price: K;
+  user: Y;
+};
+
+let BoxeRtype: BoxType<string, number, string> = {
+  name: "marco",
+  price: 1234567,
+  user: "STark",
+};
