@@ -51,8 +51,8 @@ console.log(car);
 // INDEX SIGNATURE
 const aboutYash: { [index: string]: number | string } = {};
 aboutYash.name = "Yaswant Kumar S";
-aboutYash.salary = "26lpa";
-console.log(aboutYash);
+aboutYash.salary = 90;
+console.log("indexsignature", aboutYash);
 
 // what if we need obj of obj dynamic
 type Person = {
@@ -344,3 +344,31 @@ const sysUsers: Record<Roles, SystemUser> = {
 };
 
 console.log(sysUsers);
+
+// Exclude
+
+// this removes a type from the union
+type TestTypes = string | number | boolean;
+
+let testExclude: Exclude<TestTypes, number> = "this is a string";
+console.log(testExclude);
+
+// keyof
+interface TestPerson {
+  name: string;
+  age: number;
+}
+
+function printthepersonproperty(
+  person: TestPerson,
+  property: keyof TestPerson,
+) {
+  console.log(`the the property of the ${property} is ${person[property]}`);
+}
+
+let testPersonIs: TestPerson = {
+  name: "yash",
+  age: 25,
+};
+
+printthepersonproperty(testPersonIs, "name");
