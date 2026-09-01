@@ -268,3 +268,79 @@ let BoxeRtype: BoxType<string, number, string> = {
   price: 1234567,
   user: "STark",
 };
+
+// utility types in typescript
+// Partial
+interface Point {
+  x: number;
+  y?: number;
+}
+// let pointPart: Partial<Point> = {};
+// pointPart.x = 1234;
+// pointPart.y = 5678;
+let pointPart: Required<Point> = {
+  x: 123456,
+  y: 523846,
+};
+
+console.log(pointPart);
+
+// Pick
+
+interface PersonInterface {
+  name: string;
+  age: number;
+  loccation?: string;
+  role: string;
+  yoe?: number;
+}
+
+const Yash: Pick<PersonInterface, "name" | "age" | "role"> = {
+  name: "yash",
+  age: 25,
+  role: "SoftwareEngineer",
+};
+
+console.log(Yash);
+
+//Omit
+
+interface CarBrands {
+  name: string;
+  year: number;
+  price: number;
+  varient: string;
+}
+
+const buggati: Omit<CarBrands, "price" | "year"> = {
+  name: "Buggati",
+  varient: "Petrol",
+};
+
+console.log(buggati);
+
+// Record
+
+type Roles = "superAdmin" | "admin" | "api";
+
+interface SystemUser {
+  name: string;
+  age: number;
+}
+
+const sysUsers: Record<Roles, SystemUser> = {
+  superAdmin: {
+    name: "userOne",
+    age: 34,
+  },
+  admin: {
+    name: "userOne",
+    age: 34,
+  },
+  api: {
+    name: "userOne",
+    age: 34,
+  },
+};
+
+console.log(sysUsers);
