@@ -1,31 +1,78 @@
 import type { User } from "./types/users";
 import type { Ticket } from "./types/tickets";
 import type { Comment } from "./types/comments";
+import type { Audit } from "./types/audit";
 
-let userOne: User = {
-  id: 1,
-  firstName: "Yash",
-  lastName: "Dev",
-  email: "test@email.com",
-  role: "admin",
-};
-console.log(userOne);
+// services
+import { createTicket } from "./services/ticketService";
 
-let ticketOne: Ticket = {
-  id: 101,
-  title: "Ticket One",
-  description: "this is the description of the ticket",
-  customer: "yash",
-  status: "in_progress",
-  priority: "medium",
-};
-console.log(ticketOne);
+// let users: User[] = [
+//   {
+//     id: 1,
+//     firstName: "YashAdmin",
+//     lastName: "Dev",
+//     email: "test@email.com",
+//     role: "admin",
+//   },
+//   {
+//     id: 2,
+//     firstName: "YashCustomer",
+//     lastName: "Dev",
+//     email: "test@email.com",
+//     role: "customer",
+//   },
+//   {
+//     id: 3,
+//     firstName: "YashAgent",
+//     lastName: "Dev",
+//     email: "test@email.com",
+//     role: "agent",
+//   },
+// ];
 
-let commentOne: Comment = {
-  id: 1002,
-  ticketRelationship: "no idea here",
-  author: "yash",
-  content: "this is the content of the string type cotent of the comment",
-  creationTime: new Date(),
-};
-console.log(commentOne);
+// let tickets: Ticket[] = [
+//   {
+//     id: 101,
+//     title: "Ticket One",
+//     description: "this is the description of the ticket",
+//     customerId: 2,
+//     status: "open",
+//     priority: "medium",
+//     createdAt: new Date(),
+//     agentId: null,
+//     updatedAt: new Date(),
+//   },
+//   {
+//     id: 102,
+//     title: "Ticket Two",
+//     description: "this is the description of the ticket",
+//     customerId: 2,
+//     status: "in_progress",
+//     priority: "medium",
+//     agentId: 3,
+//     createdAt: new Date(),
+//     updatedAt: new Date(),
+//   },
+// ];
+
+// let comments: Comment[] = [
+//   {
+//     id: 201,
+//     ticketId: 102,
+//     authorId: 3,
+//     content: "this is the test comment created by the agent  user",
+//     createdAt: new Date(),
+//   },
+// ];
+
+// let aduitLogs: Audit[] = [
+//   {
+//     id: 400,
+//     ticketId: 102,
+//     actorId: 3,
+//     action: "Added a comment to the ticket",
+//     createdAt: new Date(),
+//   },
+// ];
+// console.log(users, tickets, comments, aduitLogs);
+createTicket();

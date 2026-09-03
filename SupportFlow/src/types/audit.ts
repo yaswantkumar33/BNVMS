@@ -1,3 +1,7 @@
 export interface Audit {
-  log: string;
+  id: number;
+  ticketId: number;
+  actorId: number;
+  action: string;
+  createdAt: Date;
 }

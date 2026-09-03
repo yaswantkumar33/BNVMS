@@ -1,8 +1,12 @@
-export interface User {
+type Roles = "admin" | "agent" | "customer";
+
+interface User {
   id: number;
   firstName: string;
   lastName: string;
   email: string;
-  role: "admin" | "agent" | "customer";
+  role: Roles;
   description?: string;
 }
+
+export { User, Roles };
