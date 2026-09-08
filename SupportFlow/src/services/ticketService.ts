@@ -1,34 +1,25 @@
-import type { Ticket, Status, Priority } from "../types/tickets";
+import type {
+  Ticket,
+  CreateTicketInput,
+  CreateTicketResponse,
+} from "../types/tickets";
 import { users } from "./userService";
 
 const ticketArr: Ticket[] = [];
-const Users = users;
 
-interface CreateTicketReq {
-  customerId: number;
-  title: string;
-  description: string;
-  agentId: number | null;
-  priority: Priority;
-}
+const createTicket = (
+  v: CreateTicketInput,
+): { message: string; data?: CreateTicketResponse } => {
+  const customer = users.find((u) => u.id === v.customerId);
 
-const createTicket = (v: CreateTicketReq): { message: string } => {
-  let usereData = Users.filter((u) => u.id === v.customerId);
-  let agentData = Users.filter((u) => u.id === v.agentId);
-
-  if (usereData.length < 1) return { message: "Customer Not found" };
-  if (agentData.length < 1) return { message: "Agent Not found" };
-
-  if (usereData[0].role !== "customer") return { message: "Invalid customer" };
-  if (agentData[0].role !== "agent") return { message: "Invalid Agent data" };
-
-  
-  if (v.agentId) {
-    let agentData = Users.filter((u) => u.id === v.agentId);
-    if (!agentData || agentData[0].role !== "agent")
-      return { message: "AgentId Mismatch" };
+  if (!customer) return { message: "Customer not found" };
+  if (customer.role !== "customer")
+    return { message: "Only Customers can raise ticket" };
+  if (v.agentId !== null) {
+    const agent = users.find((u) => u.id === v.agentId && u.role === "agent");
+    if (!agent) return { message: "Invalid Agent" };
   }
-  let ticketnode: Ticket = {
+  const ticketnode: Ticket = {
     id: ticketArr.length + 1,
     customerId: v.customerId,
     title: v.title,
@@ -40,10 +31,9 @@ const createTicket = (v: CreateTicketReq): { message: string } => {
     updatedAt: new Date(),
   };
   ticketArr.push(ticketnode);
-  console.log(ticketArr);
-
   return {
     message: "Ticket Added scuessfully",
+    data: ticketnode,
   };
 };
 

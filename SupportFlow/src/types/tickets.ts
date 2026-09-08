@@ -11,3 +11,11 @@ export interface Ticket {
   createdAt: Date;
   updatedAt: Date;
 }
+export interface CreateTicketInput {
+  customerId: number;
+  title: string;
+  description: string;
+  agentId: number | null;
+  priority: Priority;
+}
+export type CreateTicketResponse = Ticket;
