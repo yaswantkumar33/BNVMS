@@ -8,8 +8,8 @@ export interface Ticket {
   agentId: number | null;
   priority: Priority;
   status: Status;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 export interface CreateTicketInput {
   customerId: number;
@@ -19,3 +19,9 @@ export interface CreateTicketInput {
   priority: Priority;
 }
 export type CreateTicketResponse = Ticket;
+export type GetTicketInput = number;
+export type GetTicketResponse = Ticket;
+export interface assignTicketInput {
+  id: number;
+  agentId: number;
+}
